@@ -67,9 +67,9 @@ This project demonstrates a complete machine learning pipeline that:
 
 ai-house-price-predictor/
 │
-├── index.html          # Main application file
-├── README.md           # Project documentation
-└── screenshots/        # Demo images (optional)
+├── index.html          # Main application html file
+├── style.css           # css file
+└── script.js           # java script file
 
 
 
