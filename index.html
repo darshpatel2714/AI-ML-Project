@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI/ML House Price Predictor</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/3.21.0/tf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏠 AI House Price Predictor</h1>
+            <p class="subtitle">Machine Learning Model for Real Estate Price Estimation</p>
+        </div>
+
+        <div class="training-section">
+            <button id="trainBtn" class="btn" onclick="startTraining()">
+                <span id="trainText">Train AI Model</span>
+                <span id="trainLoader" class="loading" style="display: none;"></span>
+            </button>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p id="trainingStatus">Click to start training the neural network</p>
+        </div>
+
+        <div class="main-content">
+            <div class="input-section">
+                <h3>🏠 House Features</h3>
+                <div class="input-group">
+                    <label for="bedrooms">Number of Bedrooms</label>
+                    <select id="bedrooms">
+                        <option value="1">1 Bedroom</option>
+                        <option value="2" selected>2 Bedrooms</option>
+                        <option value="3">3 Bedrooms</option>
+                        <option value="4">4 Bedrooms</option>
+                        <option value="5">5+ Bedrooms</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="bathrooms">Number of Bathrooms</label>
+                    <select id="bathrooms">
+                        <option value="1">1 Bathroom</option>
+                        <option value="2" selected>2 Bathrooms</option>
+                        <option value="3">3 Bathrooms</option>
+                        <option value="4">4+ Bathrooms</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="sqft">Square Footage</label>
+                    <input type="number" id="sqft" value="1500" min="500" max="5000" placeholder="e.g., 1500">
+                </div>
+
+                <div class="input-group">
+                    <label for="age">House Age (years)</label>
+                    <input type="number" id="age" value="10" min="0" max="100" placeholder="e.g., 10">
+                </div>
+
+                <div class="input-group">
+                    <label for="location">Location Quality (1-10)</label>
+                    <input type="range" id="location" min="1" max="10" value="7">
+                    <span id="locationValue">7</span>
+                </div>
+
+                <button class="btn" onclick="makePrediction()" id="predictBtn" disabled>
+                    🔮 Predict Price
+                </button>
+            </div>
+
+            <div class="result-section">
+                <h3>💰 Predicted Price</h3>
+                <div class="price-display" id="priceResult">
+                    Train model first
+                </div>
+                <p id="confidenceLevel">Model confidence will be shown here</p>
+                
+                <div class="chart-container">
+                    <canvas id="priceChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="model-info">
+            <h3>🧠 AI Model Information</h3>
+            <p><strong>Algorithm:</strong> Neural Network (Dense Layers)</p>
+            <p><strong>Framework:</strong> TensorFlow.js</p>
+            <p><strong>Features:</strong> Bedrooms, Bathrooms, Square Footage, Age, Location</p>
+            <p><strong>Training Data:</strong> 1000+ synthetic house records</p>
+            <p><strong>Accuracy:</strong> <span id="modelAccuracy">Train model to see accuracy</span></p>
+            
+            <div class="feature-importance">
+                <div class="feature-item">
+                    <strong>Square Footage</strong><br>
+                    <span style="color: #667eea;">High Impact</span>
+                </div>
+                <div class="feature-item">
+                    <strong>Location Quality</strong><br>
+                    <span style="color: #667eea;">High Impact</span>
+                </div>
+                <div class="feature-item">
+                    <strong>Bedrooms</strong><br>
+                    <span style="color: #764ba2;">Medium Impact</span>
+                </div>
+                <div class="feature-item">
+                    <strong>Age</strong><br>
+                    <span style="color: #764ba2;">Medium Impact</span>
+                </div>
+            </div>
+        </div>
+        <center><span>&copy; Darsh Patel</span></center>
+    </div>
+</body>
+</html>
